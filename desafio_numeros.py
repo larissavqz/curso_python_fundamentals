@@ -77,6 +77,28 @@ def numero_que_mais_aparece_ultimo(numeros):
     
     return maior_frequencia, numero_mais_frequente
 
+def numero_segundo_mais_frequente(numeros):
+    contagem = {}
+    maior_frequencia = 0
+    segundo_mais_frequente = None
+
+    for numero in numeros:
+        if numero in contagem:
+            contagem[numero] += 1
+        else:
+            contagem[numero] = 1
+    
+    for numero in numeros:
+        if contagem[numero] >= maior_frequencia:
+            maior_frequencia = contagem[numero]
+        else:
+            segundo_mais_frequente = numero
+
+    if segundo_mais_frequente == None:
+        return "Não existe"
+
+    return segundo_mais_frequente
+
 # Exemplo de uso
 entrada = input().split()
 resultado = numero_que_mais_cresce(entrada)
@@ -87,3 +109,6 @@ print(resultado)  # Saída: 1
 
 resultado = numero_que_mais_aparece_ultimo(entrada)
 print(f"Maior frequencia: {resultado[0]} Número mais frequente que aparece por último: {resultado[1]}")
+
+resultado = numero_segundo_mais_frequente(entrada)
+print(resultado)
